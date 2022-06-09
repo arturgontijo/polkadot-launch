@@ -154,6 +154,7 @@ export function startNode(
 	}
 
 	p[name] = spawn(bin, args);
+	console.log(`Running: ${bin} ${args}`);
 
 	let log = fs.createWriteStream(`${config_dir}/${name}.log`);
 
@@ -281,6 +282,7 @@ export function startCollator(
 		p[wsPort] = spawn(bin, args);
 
 		let log = fs.createWriteStream(`${config_dir}/${wsPort}.log`);
+		console.log(`Running: ${bin} ${args}`);
 
 		p[wsPort].stdout.pipe(log);
 		p[wsPort].stderr.on("data", function (chunk) {
@@ -329,6 +331,7 @@ export function startSimpleCollator(
 		// }
 
 		p[port] = spawn(bin, args);
+		console.log(`Running: ${bin} ${args}`);
 
 		let log = fs.createWriteStream(`${config_dir}/${port}.log`);
 

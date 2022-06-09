@@ -75,7 +75,7 @@ export async function run(config_dir: string, rawConfig: LaunchConfig) {
 		const bin = resolve(config_dir, parachain.bin);
 		let chainSpecPath = resolve(config_dir, parachain.chainSpecRawPath);
 
-		if (!(resolvedId in registeredParachains)) {
+		if (!(resolvedId in registeredParachains) && relayChainApi.tx?.parasSudoWrapper) {
 			// SUDO registering Parachain.
 			const genesisState = await exportGenesisState(bin, chainSpecPath);
 			const genesisWasm = await exportGenesisWasm(bin, chainSpecPath);

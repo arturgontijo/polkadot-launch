@@ -419,7 +419,7 @@ async function generateParachainSpec(config_dir: string, parachain: any) {
 				config_dir,
 				`parachain${chain ? "-" + chain : ""}-${resolvedId}-raw.json`
 			);
-			await generateChainSpec(bin, "", parachain_spec);
+			await generateChainSpec(bin, chain, parachain_spec);
 			await updateParachainId(parachain_spec, parseInt(resolvedId));
 			await generateChainSpecRaw(bin, parachain_spec, parachain_spec_raw);
 		} else parachain_spec_raw = chainSpecPath;
